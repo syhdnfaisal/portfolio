@@ -52,9 +52,17 @@
             <h3>Hello, My name is</h3>
             <h1>Syahdan Faisal Akbar</h1>
             <span class="multiple-text"></span>
+            <p>
+              I have experience as an IT Application Support, responsible for
+              troubleshooting application issues, analyzing system errors,
+              supporting end-users, and collaborating with IT teams to ensure
+              smooth application performance. I am fast learner, enthusiastic
+              about learning new things, able to work as individual and as a
+              team.
+            </p>
           </div>
           <div class="btn-group">
-            <a href="assets/CV_Faisal_Akbar_2.pdf" download class="btn"
+            <a href="assets/CV_Faisal_Akbar_4.pdf" download class="btn"
               >Download CV</a
             >
             <a href="#contact" class="btn">Contact</a>
@@ -123,7 +131,7 @@
           </div>
         </div>
 
-        <img src="assets/ProfileImage.jpeg" alt="" />
+        <!-- <img src="assets/ProfileImage.jpeg" alt="" /> -->
       </div>
     </section>
 
@@ -138,22 +146,38 @@
             onclick="openModal(this.src)"
           />
           <h3>Dashboard Monitoring Transaction</h3>
-          <!-- <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            iure vel illum rem, aut aspernatur sed minus impedit distinctio
-            delectus sequi reprehenderit aliquid minima quae, vero nesciunt.
-            Optio, eius molestias?
-          </p> -->
+          <p>
+            A transaction monitoring dashboard designed to help the application
+            support team monitor transaction activity in real time, detect
+            discrepancies, and ensure optimal system performance. This dashboard
+            displays transaction data centrally with informative visualizations
+            such as branch name, closing date, report total, and information
+            about any discrepancies. Users can filter by date for easier
+            analysis.
+          </p>
+          <p>
+            The application is built using Node.js and Express.js to handle the
+            API, data processing, and database integration. The backend is
+            designed with a RESTful API architecture for easy development and
+            scalability.
+          </p>
         </div>
         <div class="project-card">
           <img src="assets/posapp.png" onclick="openModal(this.src)" alt="" />
           <h3>POS System</h3>
-          <!-- <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            iure vel illum rem, aut aspernatur sed minus impedit distinctio
-            delectus sequi reprehenderit aliquid minima quae, vero nesciunt.
-            Optio, eius molestias?
-          </p> -->
+          <p>
+            I developed a web-based Point of Sale (POS) system designed to
+            facilitate efficient, fast, and integrated sales transaction
+            processing. This system allows users to manage sales, products, and
+            transaction reports in one easy-to-use platform.
+          </p>
+          <p>
+            On the backend, the application was built using Laravel, which
+            implements an MVC architecture to keep the code structure clean and
+            easy to develop. To speed up the creation of the admin dashboard, I
+            utilized Filament, which allows for efficient data management with a
+            modern and intuitive interface.
+          </p>
         </div>
         <!-- <div class="project-card">
           <img src="assets/ProfileImage.jpeg" alt="" />
@@ -176,11 +200,20 @@
     <section class="contact" id="contact">
       <div class="input-box">
         <h2 class="section-title">Contact Me</h2>
+
         <div class="input">
-          <input type="text" placeholder="example@gmail.com" />
-          <!-- <i class="fa-solid fa-envelope"></i> -->
+          <input type="text" id="name" placeholder="Your Name" />
         </div>
-        <div class="btn">Submit</div>
+
+        <div class="input">
+          <input type="email" id="email" placeholder="Your Email" />
+        </div>
+
+        <div class="input">
+          <input type="text" id="message" placeholder="Your Message" />
+        </div>
+
+        <div class="btn" onclick="sendEmail()">Submit</div>
       </div>
     </section>
 
@@ -214,6 +247,34 @@
 
       function closeModal() {
         document.getElementById("imageModal").style.display = "none";
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script>
+      (function () {
+        emailjs.init("Y-zsQxWi6UD1Mqssg"); // ganti ini
+      })();
+
+      function sendEmail() {
+        let params = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+        };
+
+        emailjs
+          .send("service_jd7c0fp", "template_dkii65d", params)
+          .then(function (response) {
+            alert("✅ Email berhasil dikirim!");
+          })
+          .catch(function (error) {
+            alert("❌ Gagal mengirim email");
+            console.error(error);
+          });
       }
     </script>
   </body>
